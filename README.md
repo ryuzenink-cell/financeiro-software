@@ -219,3 +219,46 @@ Versão atual: `0.1.0`
 ## Autor
 
 Desenvolvido por **Ryuzen**.
+
+## Atualização — Fundação Financeira Avançada
+
+Esta versão evolui a Sprint 1 para um núcleo financeiro mais confiável, preparando o sistema para DRE, BP, DFC, NFC, custeio e precificação.
+
+### Implementado
+
+- Data de vencimento nos lançamentos financeiros.
+- Separação entre competência, vencimento e pagamento/recebimento.
+- Transferências reais entre contas, com conta origem e conta destino.
+- Cálculo de saldo corrigido, sem duplicar saldo inicial.
+- Vínculo de lançamentos a clientes e fornecedores.
+- Contas a pagar e contas a receber geradas automaticamente por lançamentos pendentes.
+- Botão para marcar lançamento como pago/recebido.
+- Cancelamento, duplicação e anexos em lançamentos.
+- Status por tipo de lançamento e vencimento calculado automaticamente na visualização.
+- Categorias financeiras com grupo DRE, grupo DFC, grupo BP, natureza e vínculo ao plano de contas.
+- Plano de contas simplificado.
+- Filtros avançados por tipo, status, campo de data e período.
+- Dashboard gerencial expandido.
+- Fluxo de caixa realizado e projetado.
+- Cálculo inicial de NFC — Necessidade de Fluxo de Caixa.
+- Relatórios gerenciais por categoria e saldo por conta.
+- Conciliação manual de caixa/banco.
+- Cadastro de clientes.
+- Sistema de migração simples para bancos criados nas versões anteriores.
+- Chaves estrangeiras ativadas no SQLite.
+
+### Observação
+
+O banco `.db` não está incluído no ZIP para evitar sobrescrever dados locais. Ao abrir o sistema, o `schema.py` cria ou migra as tabelas automaticamente.
+
+## Atualização — Categorias padrão e cadastro da empresa
+
+Esta versão adiciona:
+
+- restauração automática das categorias financeiras padrão usadas por DRE, BP, DFC e fluxo de caixa;
+- botão **Restaurar padrões** em **Financeiro > Categorias Financeiras**;
+- nova área **Cadastros > Minha Empresa**;
+- acesso alternativo em **Sistema > Configurações da Empresa**;
+- tabela `empresas_sistema` para armazenar dados cadastrais do MEI/empresa.
+
+As categorias personalizadas não são apagadas ao restaurar os padrões. O sistema apenas recria categorias padrão ausentes e reativa/atualiza as existentes.

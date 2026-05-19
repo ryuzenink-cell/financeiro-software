@@ -353,6 +353,9 @@ class FornecedoresPage(QWidget):
         )
 
         if resposta == QMessageBox.Yes:
-            excluir_fornecedor(fornecedor["id"])
+            ok, inativado = excluir_fornecedor(fornecedor["id"])
             self.carregar_fornecedores()
-            QMessageBox.information(self, "Sucesso", "Fornecedor excluído com sucesso.")
+            if ok and inativado:
+                QMessageBox.information(self, "Sucesso", "Fornecedor tinha lançamentos e foi inativado.")
+            elif ok:
+                QMessageBox.information(self, "Sucesso", "Fornecedor excluído com sucesso.")

@@ -6,7 +6,7 @@ def listar_fornecedores(limite=20, offset=0):
     cursor = conn.cursor()
 
     cursor.execute("""
-        SELECT id, nome, documento, telefone, email, criado_em
+        SELECT id, nome, documento, telefone, email, endereco, observacoes, ativo, criado_em
         FROM fornecedores
         ORDER BY nome ASC
         LIMIT ? OFFSET ?
@@ -25,7 +25,7 @@ def buscar_fornecedores(termo, limite=20, offset=0):
     termo_busca = f"%{termo}%"
 
     cursor.execute("""
-        SELECT id, nome, documento, telefone, email, criado_em
+        SELECT id, nome, documento, telefone, email, endereco, observacoes, ativo, criado_em
         FROM fornecedores
         WHERE nome LIKE ?
            OR documento LIKE ?
